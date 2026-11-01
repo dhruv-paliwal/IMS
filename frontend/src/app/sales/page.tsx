@@ -54,6 +54,13 @@ export default function Sales() {
   useEffect(() => {
     fetchSales();
     fetchProducts();
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("modal") === "manual") {
+        setShowManualModal(true);
+        setNewSale({ product_id: "2", quantity: 2, total_price: 500 });
+      }
+    }
   }, []);
 
   const fetchSales = async () => {

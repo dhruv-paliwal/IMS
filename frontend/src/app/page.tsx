@@ -211,6 +211,7 @@ export default function Dashboard() {
                 name="Actual Sales"
                 fill="#C04000" 
                 radius={[4, 4, 0, 0]} 
+                isAnimationActive={false}
                 label={{ 
                   position: 'top', 
                   formatter: (value: any) => (value && Number(value) > 0 ? `₹${Math.round(Number(value)).toLocaleString('en-IN')}` : ''), 
@@ -224,6 +225,7 @@ export default function Dashboard() {
                 name="AI Forecast"
                 fill="#FF9933" 
                 radius={[4, 4, 0, 0]} 
+                isAnimationActive={false}
                 label={{ 
                   position: 'top', 
                   formatter: (value: any) => (value && Number(value) > 0 ? `₹${Math.round(Number(value)).toLocaleString('en-IN')}` : ''), 

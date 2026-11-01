@@ -208,7 +208,7 @@ export default function Forecasting() {
                            contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
                            formatter={(val: any) => [`${val} units/day`, 'Predicted Demand']}
                         />
-                        <Line type="monotone" dataKey="demand" stroke="#C04000" strokeWidth={4} dot={false} activeDot={{ r: 8, fill: '#FF9933' }} />
+                        <Line type="monotone" dataKey="demand" stroke="#C04000" strokeWidth={4} dot={false} isAnimationActive={false} activeDot={{ r: 8, fill: '#FF9933' }} />
                      </RechartsLineChart>
                   </ResponsiveContainer>
                </div>
