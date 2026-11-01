@@ -6,9 +6,12 @@ from sqlalchemy.orm import sessionmaker
 # Use DATABASE_URL from environment (e.g. Render PostgreSQL), fallback to local SQLite
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./inventory.db")
 
-# Render/Heroku postgresql:// URLs might use postgres:// which SQLAlchemy 1.4+ expects as postgresql://
+# Render postgresql:// URLs might use postgres:// or postgresql://
+# SQLAlchemy 2.0 uses psycopg driver with postgresql+psycopg://
 if DATABASE_URL.startswith("postgres://"):
-    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg://", 1)
+elif DATABASE_URL.startswith("postgresql://") and not DATABASE_URL.startswith("postgresql+"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg://", 1)
 
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 
