@@ -173,6 +173,8 @@ def create_sale(sale: schemas.SaleCreate, db: Session = Depends(database.get_db)
         raise HTTPException(status_code=404, detail="Product not found")
     if product.stock < sale.quantity:
         raise HTTPException(status_code=400, detail="Not enough stock")
+    if product.expiry_date and product.expiry_date < datetime.now():
+        raise HTTPException(status_code=400, detail=f"Cannot sell '{product.name}': Product expired on {product.expiry_date.strftime('%d-%b-%Y')}. Selling expired products is prohibited.")
     
     total_price = sale.total_price if sale.total_price is not None else (product.price * sale.quantity)
     product.stock -= sale.quantity
@@ -356,14 +358,12 @@ def get_clearance_suggestions(db: Session = Depends(database.get_db)):
 
         days_to_expiry = (p.expiry_date.date() - now.date()).days
 
-        # Products within 15 days of expiry or expired within last 7 days
-        if days_to_expiry <= 15 and p.stock > 0:
-            if days_to_expiry < 0:
-                discount = 50
-                reason = f"Expired {abs(days_to_expiry)} days ago! Immediate 50% clearance or salvage markdown needed."
-            elif days_to_expiry <= 3:
-                discount = 40
-                reason = f"Expiring in {days_to_expiry} days! Apply 40% quick-clearance to liquidate {p.stock} units."
+        # Clearance discounts apply strictly to near-expiry items (1 to 15 days) to liquidate before expiry
+        # Expired items are flagged for removal/disposal and must NEVER be sold or discounted
+        if 0 < days_to_expiry <= 15 and p.stock > 0:
+            if days_to_expiry <= 3:
+                discount = 35
+                reason = f"Expiring in {days_to_expiry} days! Recommend 35% discount to liquidate {p.stock} units before expiry."
             elif days_to_expiry <= 7:
                 discount = 25
                 reason = f"Expiring in {days_to_expiry} days! Recommend 25% discount to accelerate turnover."

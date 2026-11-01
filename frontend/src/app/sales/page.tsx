@@ -115,6 +115,10 @@ export default function Sales() {
   const handleSelectSKU = (sku: string) => {
     const matchedProduct = products.find((p: any) => p.sku === sku);
     if (matchedProduct) {
+      if (matchedProduct.expiry_date && new Date(matchedProduct.expiry_date) < new Date()) {
+        alert(`CANNOT SELL: '${matchedProduct.name}' has EXPIRED! Selling expired items is strictly prohibited. Please discard from shelves.`);
+        return;
+      }
       setNewSale({ product_id: matchedProduct.id.toString(), quantity: 1, total_price: matchedProduct.price });
       setShowScanModal(false);
       setShowManualModal(true);
@@ -144,6 +148,12 @@ export default function Sales() {
                 (p: any) => p.sku.toLowerCase() === decodedText.trim().toLowerCase() || p.id.toString() === decodedText.trim()
               );
               if (matchedProduct) {
+                 if (matchedProduct.expiry_date && new Date(matchedProduct.expiry_date) < new Date()) {
+                    alert(`CANNOT SELL: '${matchedProduct.name}' has EXPIRED! Selling expired items is strictly prohibited. Please discard from shelves.`);
+                    scanner?.clear();
+                    setShowScanModal(false);
+                    return;
+                 }
                  setNewSale({ product_id: matchedProduct.id.toString(), quantity: 1, total_price: matchedProduct.price });
                  setShowScanModal(false);
                  setShowManualModal(true);
@@ -255,9 +265,14 @@ export default function Sales() {
                   className="w-full p-2 rounded border border-indigo/20 focus:outline-none focus:border-terracotta"
                 >
                   <option value="" disabled>Select a product...</option>
-                  {products.map((p: any) => (
-                    <option key={p.id} value={p.id}>{p.name} (Stock: {p.stock})</option>
-                  ))}
+                  {products.map((p: any) => {
+                    const isExp = p.expiry_date && new Date(p.expiry_date) < new Date();
+                    return (
+                      <option key={p.id} value={p.id} disabled={isExp} className={isExp ? 'text-red-500 bg-red-50' : ''}>
+                        {p.name} {isExp ? '(EXPIRED - CANNOT SELL)' : `(Stock: ${p.stock})`}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
               <div className="grid grid-cols-2 gap-4">

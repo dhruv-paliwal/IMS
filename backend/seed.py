@@ -31,14 +31,14 @@ def seed_db():
         {"name": "Turmeric Powder (Organic)", "sku": "SP-TUR-01", "category": "Spices", "price": 120.0, "stock": 45, "supplier": "Kerala Spices Co.", "expiry_date": now + timedelta(days=180)},
         {"name": "Basmati Rice (Premium)", "sku": "GR-BAS-02", "category": "Grains", "price": 250.0, "stock": 120, "supplier": "Punjab Agro", "expiry_date": now + timedelta(days=365)},
         {"name": "Kashmiri Chilli Powder", "sku": "SP-CHI-03", "category": "Spices", "price": 180.0, "stock": 5, "supplier": "Kerala Spices Co.", "expiry_date": now + timedelta(days=90)},
-        {"name": "Cold Pressed Coconut Oil", "sku": "OI-COC-04", "category": "Oils", "price": 450.0, "stock": 25, "supplier": "Malabar Naturals", "expiry_date": now - timedelta(days=10)}, # Expired
-        {"name": "Darjeeling Tea Leaves", "sku": "BE-TEA-05", "category": "Beverages", "price": 300.0, "stock": 8, "supplier": "Assam Tea Estates", "expiry_date": now + timedelta(days=15)},
+        {"name": "Cold Pressed Coconut Oil", "sku": "OI-COC-04", "category": "Oils", "price": 450.0, "stock": 25, "supplier": "Malabar Naturals", "expiry_date": now + timedelta(days=5)}, # Expiring in 5 days
+        {"name": "Darjeeling Tea Leaves", "sku": "BE-TEA-05", "category": "Beverages", "price": 300.0, "stock": 8, "supplier": "Assam Tea Estates", "expiry_date": now + timedelta(days=10)}, # Expiring in 10 days
         {"name": "Green Cardamom Whole", "sku": "SP-CAR-06", "category": "Spices", "price": 1200.0, "stock": 2, "supplier": "Kerala Spices Co.", "expiry_date": now + timedelta(days=120)}, # Very low stock
         {"name": "Toor Dal (Pigeon Pea)", "sku": "LE-TOO-07", "category": "Lentils", "price": 160.0, "stock": 200, "supplier": "Deccan Farms", "expiry_date": now + timedelta(days=200)},
         {"name": "Mustard Oil (Kachi Ghani)", "sku": "OI-MUS-08", "category": "Oils", "price": 190.0, "stock": 4, "supplier": "Rajasthan Mills", "expiry_date": now + timedelta(days=180)},
         {"name": "Cumin Seeds (Jeera)", "sku": "SP-CUM-09", "category": "Spices", "price": 280.0, "stock": 60, "supplier": "Gujarat Traders", "expiry_date": now + timedelta(days=150)},
-        {"name": "Garam Masala Blend", "sku": "SP-GAR-10", "category": "Spices", "price": 220.0, "stock": 1, "supplier": "Delhi Spices", "expiry_date": now + timedelta(days=100)}, # Critical stock
-        {"name": "Desi Ghee (Clarified Butter)", "sku": "DA-GHE-11", "category": "Dairy", "price": 550.0, "stock": 35, "supplier": "Haryana Dairy", "expiry_date": now - timedelta(days=2)}, # Expired
+        {"name": "Garam Masala Blend", "sku": "SP-GAR-10", "category": "Spices", "price": 220.0, "stock": 1, "supplier": "Delhi Spices", "expiry_date": now - timedelta(days=2)}, # Expired (Must Discard)
+        {"name": "Desi Ghee (Clarified Butter)", "sku": "DA-GHE-11", "category": "Dairy", "price": 550.0, "stock": 35, "supplier": "Haryana Dairy", "expiry_date": now + timedelta(days=7)}, # Expiring in 7 days
         {"name": "Whole Wheat Atta", "sku": "GR-WHE-12", "category": "Grains", "price": 220.0, "stock": 300, "supplier": "Punjab Agro", "expiry_date": now + timedelta(days=90)},
         {"name": "Brown Chickpeas (Kala Chana)", "sku": "LE-CHI-13", "category": "Lentils", "price": 110.0, "stock": 9, "supplier": "Deccan Farms", "expiry_date": now + timedelta(days=250)},
         {"name": "Coriander Powder (Dhania)", "sku": "SP-COR-14", "category": "Spices", "price": 140.0, "stock": 55, "supplier": "Gujarat Traders", "expiry_date": now + timedelta(days=160)},
@@ -46,7 +46,7 @@ def seed_db():
         {"name": "Himalayan Pink Salt", "sku": "SP-SAL-16", "category": "Spices", "price": 120.0, "stock": 80, "supplier": "Mountain Naturals", "expiry_date": now + timedelta(days=500)},
         {"name": "Jaggery Powder (Gur)", "sku": "SW-JAG-17", "category": "Sweeteners", "price": 90.0, "stock": 0, "supplier": "UP Sugars", "expiry_date": now + timedelta(days=120)}, # Out of stock
         {"name": "Poha (Flattened Rice)", "sku": "GR-POH-18", "category": "Grains", "price": 60.0, "stock": 150, "supplier": "MP Agro", "expiry_date": now + timedelta(days=140)},
-        {"name": "Cashew Nuts (Kaju)", "sku": "DF-CAS-19", "category": "Dry Fruits", "price": 850.0, "stock": 15, "supplier": "Goa Cashews", "expiry_date": now - timedelta(days=5)}, # Expired
+        {"name": "Cashew Nuts (Kaju)", "sku": "DF-CAS-19", "category": "Dry Fruits", "price": 850.0, "stock": 15, "supplier": "Goa Cashews", "expiry_date": now + timedelta(days=3)}, # Expiring in 3 days
         {"name": "Almonds (Badam)", "sku": "DF-ALM-20", "category": "Dry Fruits", "price": 750.0, "stock": 3, "supplier": "Kashmir Orchards", "expiry_date": now + timedelta(days=200)},
     ]
     

@@ -168,8 +168,8 @@ export default function Dashboard() {
               <div key={item.product_id} className="bg-white p-3 rounded-lg border border-amber-200/80 flex justify-between items-center text-xs">
                 <div>
                   <p className="font-bold text-indigo">{item.product_name}</p>
-                  <p className="text-indigo/60 text-[11px] mt-0.5">
-                    {item.days_to_expiry < 0 ? `Expired ${Math.abs(item.days_to_expiry)}d ago` : `Expiring in ${item.days_to_expiry}d`} • {item.units_at_risk} units
+                  <p className="text-indigo/60 text-[11px] mt-0.5 font-medium">
+                    Expiring in {item.days_to_expiry} days • {item.units_at_risk} units left
                   </p>
                   <div className="mt-1">
                     <span className="line-through text-indigo/40 mr-1 font-medium">₹{item.current_price}</span>

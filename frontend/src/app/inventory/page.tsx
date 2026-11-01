@@ -158,10 +158,8 @@ export default function Inventory() {
                 <div>
                    <div className="flex justify-between items-start gap-1 mb-1">
                      <h4 className="font-bold text-indigo text-sm leading-tight">{item.product_name}</h4>
-                     <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded uppercase ${
-                       item.days_to_expiry < 0 ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-800'
-                     }`}>
-                       {item.days_to_expiry < 0 ? `Expired ${Math.abs(item.days_to_expiry)}d ago` : `${item.days_to_expiry}d left`}
+                     <span className="text-[10px] font-bold px-1.5 py-0.5 rounded uppercase bg-amber-100 text-amber-800">
+                       Expiring in {item.days_to_expiry}d
                      </span>
                    </div>
                    <p className="text-[11px] text-indigo/60">{item.reason}</p>
@@ -221,7 +219,7 @@ export default function Inventory() {
               <tr key={product.id} className={`border-b border-indigo/5 hover:bg-white/50 transition-colors ${expired ? 'bg-red-50/50' : ''}`}>
                 <td className="p-4 font-medium">
                   {product.name}
-                  {expired && <span className="ml-2 text-xs bg-red-100 text-red-600 px-2 py-1 rounded font-bold uppercase">Expired</span>}
+                  {expired && <span className="ml-2 text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded font-bold uppercase">Expired (Do Not Sell)</span>}
                 </td>
                 <td className="p-4 text-indigo/70 text-sm">{product.sku}</td>
                 <td className="p-4">
