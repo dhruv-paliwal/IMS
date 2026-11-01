@@ -234,7 +234,7 @@ export default function Inventory() {
                         <span className={`font-bold ${lowStock ? 'text-red-600' : 'text-green-600'}`}>
                           {product.stock} units
                         </span>
-                        {lowStock && <AlertCircle size={16} className="text-red-500" title="Low Stock" />}
+                        {lowStock && <span title="Low Stock"><AlertCircle size={16} className="text-red-500" /></span>}
                       </div>
                       {product.expiry_date && (
                          <div className="flex items-center gap-1 text-xs text-indigo/60 mt-1">

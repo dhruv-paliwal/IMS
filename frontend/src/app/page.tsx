@@ -202,7 +202,7 @@ export default function Dashboard() {
               <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" vertical={false} />
               <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{fill: '#666'}} />
               <YAxis axisLine={false} tickLine={false} tick={{fill: '#666'}} tickFormatter={(val) => `₹${val}`} />
-              <Tooltip formatter={(value: number) => formatCurrency(value)} cursor={{fill: '#f5f5f5'}} />
+              <Tooltip formatter={(value: any) => formatCurrency(Number(value || 0))} cursor={{fill: '#f5f5f5'}} />
               
               <Legend verticalAlign="top" height={36}/>
               
@@ -213,7 +213,7 @@ export default function Dashboard() {
                 radius={[4, 4, 0, 0]} 
                 label={{ 
                   position: 'top', 
-                  formatter: (value: number) => value > 0 ? `₹${Math.round(value).toLocaleString('en-IN')}` : '', 
+                  formatter: (value: any) => (value && Number(value) > 0 ? `₹${Math.round(Number(value)).toLocaleString('en-IN')}` : ''), 
                   fill: '#C04000', 
                   fontSize: 12, 
                   fontWeight: 'bold' 
@@ -226,7 +226,7 @@ export default function Dashboard() {
                 radius={[4, 4, 0, 0]} 
                 label={{ 
                   position: 'top', 
-                  formatter: (value: number) => value > 0 ? `₹${Math.round(value).toLocaleString('en-IN')}` : '', 
+                  formatter: (value: any) => (value && Number(value) > 0 ? `₹${Math.round(Number(value)).toLocaleString('en-IN')}` : ''), 
                   fill: '#FF9933', 
                   fontSize: 12, 
                   fontWeight: 'bold' 

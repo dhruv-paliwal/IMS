@@ -206,7 +206,7 @@ export default function Forecasting() {
                         <YAxis axisLine={false} tickLine={false} tick={{fill: '#666', fontSize: 14, fontWeight: 'bold'}} />
                         <Tooltip 
                            contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
-                           formatter={(val: number) => [`${val} units/day`, 'Predicted Demand']}
+                           formatter={(val: any) => [`${val} units/day`, 'Predicted Demand']}
                         />
                         <Line type="monotone" dataKey="demand" stroke="#C04000" strokeWidth={4} dot={false} activeDot={{ r: 8, fill: '#FF9933' }} />
                      </RechartsLineChart>
