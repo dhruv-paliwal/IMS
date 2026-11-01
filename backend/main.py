@@ -4,7 +4,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta, timezone
 from passlib.context import CryptContext
-from jose import JWTError, jwt
+try:
+    from jose import JWTError, jwt
+except ImportError:
+    try:
+        import jwt
+        from jwt.exceptions import PyJWTError as JWTError
+    except ImportError:
+        jwt = None
+        JWTError = Exception
 import math
 import random
 

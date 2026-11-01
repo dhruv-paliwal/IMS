@@ -1,8 +1,13 @@
 import database
 import models
-from main import get_password_hash
+from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
 import random
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+def get_password_hash(password):
+    return pwd_context.hash(password)
 
 def seed_db():
     database.Base.metadata.create_all(bind=database.engine)
