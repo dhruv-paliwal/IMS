@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-terracotta: #C04000;
+  --color-saffron: #FF9933;
+  --color-indigo: #13274F;
+  --color-turmeric: #F6C324;
+  --color-ivory: #FDFBF7;
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-indigo);
+  font-family: var(--font-sans);
+  /* Subtle Kalamkari-inspired watermark pattern using radial gradients */
+  background-image: radial-gradient(#F6C324 0.5px, transparent 0.5px), radial-gradient(#F6C324 0.5px, #FDFBF7 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  background-blend-mode: multiply;
+  opacity: 0.95;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+.glass-card {
+  background: rgba(253, 251, 247, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 153, 51, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(19, 39, 79, 0.05);
+  border-radius: 12px;
+}
+
+/* HTML5 Barcode/QR Scanner Styling */
+#reader {
+  border: none !important;
+  text-align: center;
+}
+
+#reader video {
+  border-radius: 8px;
+  max-width: 100% !important;
+  margin: 0 auto;
+}
+
+#reader button {
+  background-color: var(--color-terracotta);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 6px 4px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  border: none;
+}
+
+#reader button:hover {
+  background-color: var(--color-saffron);
+}
+
+#reader a {
+  color: var(--color-terracotta);
+  font-weight: 600;
+  text-decoration: underline;
+  margin: 6px 0;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#reader select {
+  padding: 6px 12px;
+  border: 1px solid rgba(19, 39, 79, 0.2);
+  border-radius: 6px;
+  background-color: white;
+  margin: 6px 0;
+}

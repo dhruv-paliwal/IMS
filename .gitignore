@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+backend/venv/
+venv/
+.venv/
+env/
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Databases & runtime data
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
